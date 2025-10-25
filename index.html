@@ -1,114 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Babiyatech</title>
-<style>
-/* Profile Card Styles */
-.profile-card {
-    width: 100%;
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 15px;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-.profile-card .profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-.profile-card .buttons a.button {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    background: #0072ff;
-    color: #fff;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.profile-card .buttons a.button:hover {
-    background: #00c6ff;
-}
-
-/* Comment Box Styles */
-.comment-box {
-    display: none;
-    margin-top: 20px;
-    text-align: left;
-}
-.comment-box input,
-.comment-box textarea {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 2px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-.comment-box input:focus,
-.comment-box textarea:focus {
-    outline: none;
-    border-color: #00c6ff;
-    box-shadow: 0 0 10px rgba(0,198,255,0.5);
-}
-.comment-box input[type="file"] {
-    margin-top: 10px;
-}
-.comment-box button {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: red;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
-}
-.comment-box button:hover {
-    background: linear-gradient(135deg, #0084ff, #005cbf);
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(0, 114, 255, 0.5);
-}
-
-/* Success Dialog */
-.success-dialog {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #28a745, #218838);
-    color: #fff;
-    padding: 15px 25px;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-    font-size: 16px;
-    z-index: 1000;
-    opacity: 0;
-    transition: all 0.5s ease;
-}
-.success-dialog.show {
-    display: block;
-    opacity: 1;
-    animation: slideUp 0.5s ease-out;
-}
-@keyframes slideUp {
-    from { transform: translate(-50%, 100%); }
-    to { transform: translate(-50%, 0); }
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Real Babiya Official</title>
+    <style>
+        /* --- Your existing CSS --- */
+        .success-dialog {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            font-size: 16px;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        .success-dialog.show {
+            display: block;
+            opacity: 1;
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translate(-50%, 100%); }
+            to { transform: translate(-50%, 0); }
+        }
+    </style>
 </head>
 <body>
 
@@ -127,7 +49,7 @@
     <p>I am Real Babiya from Sri Lanka who loves Cyber Security Field. 1 Year Experience in cyber world. This is my official website.</p>
 
     <!-- Leave a Comment Button -->
-    <button class="toggle-comment-box" onclick="toggleCommentBox()">Leave a Comment</button>
+    <button class="toggle-comment-box" id="commentBtn">Leave a Comment</button>
 
     <!-- Comment Box -->
     <div class="comment-box" id="commentBox">
@@ -143,8 +65,10 @@
 <div class="success-dialog" id="successDialog">Comment sent successfully!</div>
 
 <!-- Audio Player -->
-<audio id="bg-music" src="babiyatech.mp3" autoplay loop muted></audio>
-<button id="unmute-btn" style="
+<audio id="bg-music" src="babiyatech.mp3" loop></audio>
+
+<!-- Play Music Button -->
+<button id="play-music-btn" style="
   position: fixed;
   top: 20px;
   right: 20px;
@@ -157,16 +81,16 @@
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: background 0.3s;
-">🔊 Unmute Music</button>
+">🔊 Play Music</button>
 
 <script>
-// Comment Box Toggle
+// --- Comment Box Toggle ---
 function toggleCommentBox() {
     const box = document.getElementById('commentBox');
     box.style.display = (box.style.display === 'block') ? 'none' : 'block';
 }
 
-// Send Comment Example
+// --- Send Comment ---
 function sendComment() {
     const dialog = document.getElementById('successDialog');
     dialog.classList.add('show');
@@ -175,15 +99,21 @@ function sendComment() {
     }, 3000);
 }
 
-// Audio Unmute
+// --- Music Play ---
 const audio = document.getElementById("bg-music");
-const btn = document.getElementById("unmute-btn");
-btn.addEventListener("click", () => {
-    audio.muted = false;
-    audio.volume = 1.0;
-    btn.style.display = "none";
-    alert("Music Unmuted 🎵");
+const playBtn = document.getElementById("play-music-btn");
+
+// Play music on button click
+playBtn.addEventListener("click", () => {
+    audio.play().catch(err => console.log("Error playing music:", err));
+    playBtn.style.display = "none"; // hide button after click
+});
+
+// Optional: Play music when 'Leave a Comment' button is clicked
+document.getElementById("commentBtn").addEventListener("click", () => {
+    audio.play().catch(err => console.log("Error playing music:", err));
 });
 </script>
+
 </body>
 </html>
