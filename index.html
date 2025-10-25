@@ -16,6 +16,17 @@
             font-family: 'Poppins', sans-serif;
         }
         body {
+            <audio id="bg-music" src="music.mp3" autoplay loop muted></audio>
+
+<button onclick="unmuteMusic()">🔊 Unmute Music</button>
+
+<script>
+function unmuteMusic() {
+  var audio = document.getElementById("bg-music");
+  audio.muted = false;
+  audio.volume = 1.0;
+}
+</script>
             height: 100vh;
             display: flex;
             align-items: center;
